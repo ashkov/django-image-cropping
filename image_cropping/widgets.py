@@ -40,8 +40,12 @@ def get_attrs(image, name):
             width, height = get_backend().get_size(image)
         except AttributeError:
             # invalid image -> AttributeError
-            width = image.width
-            height = image.height
+            try:
+                width = image.width
+                height = image.height
+            except:
+                width = None
+                height = None
         return {
             "class": "crop-thumb",
             "data-thumbnail-url": thumbnail_url(image),
