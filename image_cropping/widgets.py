@@ -46,6 +46,10 @@ def get_attrs(image, name):
             except:
                 width = None
                 height = None
+        except Exception as e:
+            logger.error(e.__str__())
+            width = None
+            height = None
         return {
             "class": "crop-thumb",
             "data-thumbnail-url": thumbnail_url(image),
